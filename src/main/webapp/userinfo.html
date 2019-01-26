@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" > </script>
+
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0.2, 0.2, 0.2, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: left;
+  font-family: Courier New;
+  padding: 20px;
+}
+.title {
+  color: Red;
+  font-size: 18px;
+}
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  background-color: #616A6B;
+  text-align: center;
+  cursor: pointer;
+  width: 8%;
+  font-size: 10px;
+}
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+button:hover, a:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+
+
+<h2 style="text-align:left">Customer Data</h2>
+
+<label >Customer Name :</label>
+<input id="user_name"></input>
+<button id='info_btn'>Submit</button>
+
+<div class="card" id="user_profile">
+  
+  <h2 id = "UserId">hi2</h2>
+  <h3 id="username">Hi</h3>
+  <h4 id="dob">10</h4>
+</div>
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		$("#user_profile").hide();
+	});
+	
+</script>
+
+<script type="text/javascript">
+	$("#info_btn").click(function(event){
+		var item_id = {
+			username 	: $("#user_name").val()
+		};
+		$.ajax({url:"http://localhost:8080/OOAD/webapi/myresource/userInfo", type:"POST",
+			data: JSON.stringify(item_id),
+			dataType: "json",
+		 	async: true,
+		 	
+			success: function(data) {
+				
+				if(data.result=="success"){
+					//alert(data);
+				$("#username").text("Customer Name:   "+data.user_name);
+				$("#UserId").text("Customer id:   "+data.user_id);
+				$("#dob").text("Date of Birth:"+data.dob);
+				
+				$("#user_profile").show();
+			   }
+				else{
+					alert("failed");
+				}
+			},
+			error: function(data) {
+				alert("failed");
+			}
+		 	
+			});
+	});
+</script>
+</body>
+</html>
