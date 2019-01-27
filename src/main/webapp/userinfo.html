@@ -38,6 +38,7 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 </style>
+<script src="Settings.js"></script>
 </head>
 <body>
 
@@ -69,7 +70,7 @@ button:hover, a:hover {
 		var item_id = {
 			username 	: $("#user_name").val()
 		};
-		$.ajax({url:"http://localhost:8080/OOAD/webapi/myresource/userInfo", type:"POST",
+		$.ajax({url:"http://localhost:".concat(simple().tomcat_port,"/OOAD/webapi/myresource/userInfo"), type:"POST",
 			data: JSON.stringify(item_id),
 			dataType: "json",
 		 	async: true,
