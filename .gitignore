@@ -51,5 +51,8 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
-src/main/jav/org/iiitb/OOAD/Settings.java
+src/main/java/org/iiitb/OOAD/Settings.java
 src/main/webapp/Settings.js
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+target/m2e-wtp/web-resources/META-INF/maven/org.iiitb/OOAD/pom.properties
+.classpath
