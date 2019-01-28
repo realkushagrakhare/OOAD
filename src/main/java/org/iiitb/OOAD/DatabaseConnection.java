@@ -18,9 +18,9 @@ public class DatabaseConnection{
 		catch (ClassNotFoundException e) {
 			System.out.println("Driver Not Found: " + e);
 		}
-		String user = "root";
-		String password = "1234";
-        String URL="jdbc:mysql://localhost:3306/flipkart";
+		String user = Settings.mysql_username;
+		String password = Settings.mysql_password;
+        String URL="jdbc:mysql://localhost:"+Settings.mysql_port+"/flipkart";
 		try {
 			conn = DriverManager.getConnection(URL,user,password);
 			System.out.println("Successfully Connected to Database");
