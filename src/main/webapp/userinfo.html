@@ -68,7 +68,7 @@ button:hover, a:hover {
 <script type="text/javascript">
 	$("#info_btn").click(function(event){
 		var item_id = {
-			username 	: $("#user_name").val()
+			user_name 	: $("#user_name").val()
 		};
 		$.ajax({url:"http://localhost:".concat(simple().tomcat_port,"/OOAD/webapi/myresource/userInfo"), type:"POST",
 			data: JSON.stringify(item_id),
