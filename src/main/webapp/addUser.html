@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<script class="jsbin"
+src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="image.js"></script>
+
+<style>
+body {
+font-family: sans-serif;
+background-color: #eeeeee;
+}
+
+.file-upload {
+background-color: #34495E;
+width: 600px;
+margin: 0 auto;
+padding: 20px;
+}
+
+.file-upload-btn {
+width: 50%;
+margin: 0;
+color: #fff;
+background: #3498DB  ;
+border: none;
+padding: 10px;
+border-radius: 4px;
+border-bottom: 4px solid #3498DB  ;
+transition: all .2s ease;
+outline: none;
+text-transform: uppercase;
+font-weight: 700;
+}
+
+.file-upload-btn:hover {
+background:#3498DB  ;
+color: #3498DB  ;
+transition: all .2s ease;
+cursor: pointer;
+}
+
+.file-upload-btn:active {
+border: 0;
+transition: all .2s ease;
+}
+
+.file-upload-content {
+display: none;
+text-align: center;
+}
+
+.file-upload-input {
+position: absolute;
+margin: 0;
+padding: 0;
+width: 2.5%;
+height: 2.5%;
+outline: none;
+opacity: 0;
+cursor: pointer;
+}
+
+.image-upload-wrap {
+margin-top: 20px;
+border: 4px dashed #1FB264;
+position: absolute;
+}
+
+.image-dropping, .image-upload-wrap:hover {
+background-color: #1FB264;
+border: 4px dashed #ffffff;
+}
+
+.image-title-wrap {
+padding: 0 15px 15px 15px;
+color: #222;
+}
+
+.drag-text {
+text-align: center;
+}
+
+.drag-text h3 {
+font-weight: 100;
+text-transform: uppercase;
+color: #15824B;
+padding: 60px 0;
+}
+
+.file-upload-image {
+max-height: 200px;
+max-width: 200px;
+margin: auto;
+padding: 20px;
+}
+
+.remove-image {
+width: 200px;
+margin: 0;
+color: #fff;
+background: #cd4535;
+border: none;
+padding: 10px;
+border-radius: 4px;
+border-bottom: 4px solid #b02818;
+transition: all .2s ease;
+outline: none;
+text-transform: uppercase;
+font-weight: 700;
+}
+
+.remove-image:hover {
+background: #c13b2a;
+color: #ffffff;
+transition: all .2s ease;
+cursor: pointer;
+}
+
+.remove-image:active {
+border: 0;
+transition: all .2s ease;
+}
+</style>
+
+
+
+
+<script class="jsbin"
+src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="image.js"></script>
+
+<style>
+.ex1 {
+padding-left: 500px;
+}
+
+.ex2 {
+padding-left: 450px;
+padding-top: 30px;
+}
+.ex3 {
+padding-left: 500px;
+padding-top:30px;
+}
+</style>
+<title>New User: Sign Up here</title>
+</head>
+
+
+<body style="text-align: center;">
+
+
+<h2>Add Details</h2>
+<form action="webapi/myresource/addUser" enctype="multipart/form-data"  method="post" >
+<table border="1" cellpadding="10" style="width: 100%;">
+<tr>
+<td>
+<div class="file-upload">
+<button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+<div class="image-upload-wrap"  style="padding-left:120px;padding-right:200px;">
+<input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" name="path"/>
+<div class="drag-text">
+<h5>Drag and drop a file or select add Image</h5>
+</div>
+</div>
+<div class="file-upload-content">
+<img class="file-upload-image" src="#" alt="your image" />
+<div class="image-title-wrap">
+<button type="button" onclick="removeUpload()" class="remove-image"> Remove <span class="image-title">Uploaded Image</span> </button>
+</div>
+</div>
+</div>
+<table style="padding-top:100px;">
+<tr>
+<td class="ex1">User Name :</td>
+<td><input style="text-align: center;" text" name="user_name" /></td>
+</tr>
+<tr>
+<td class="ex1">Date Of Birth :</td>
+<td><input type="text" name="dob" /></td>
+</tr>
+<tr>
+<td class="ex3"><input type="submit" value="Submit" id = "btnSubmit"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</form>
+<!--  <script type="text/javascript">
+    $("#btnSubmit").click(function (event) {
+
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        // Get form
+        var form = $('#fileUploadForm')[0];
+
+// Create an FormData object 
+        var data = new FormData(form);
+
+// If you want to add an extra field for the FormData
+        data.append("CustomField", "This is some extra data, testing");
+
+// disabled the submit button
+        $("#btnSubmit").prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "http://localhost:9000/OOAD/webapi/myresource/addUser",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+
+                $("#result").text(data);
+                console.log("SUCCESS : ", data);
+                $("#btnSubmit").prop("disabled", false);
+
+            },
+            error: function (e) {
+
+                $("#result").text(e.responseText);
+                console.log("ERROR : ", e);
+                $("#btnSubmit").prop("disabled", false);
+
+            }
+        });
+
+    });
+</script>-->
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<body bgcolor="#48C9B0">
 <head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" > </script>
@@ -55,6 +56,7 @@ button:hover, a:hover {
   <h2 id = "UserId">hi2</h2>
   <h3 id="username">Hi</h3>
   <h4 id="dob">10</h4>
+  <img id="picy" src="" width="100%" />
 </div>
 
 
@@ -68,7 +70,7 @@ button:hover, a:hover {
 <script type="text/javascript">
 	$("#info_btn").click(function(event){
 		var item_id = {
-			username 	: $("#user_name").val()
+			user_name 	: $("#user_name").val()
 		};
 		$.ajax({url:"http://localhost:".concat(simple().tomcat_port,"/OOAD/webapi/myresource/userInfo"), type:"POST",
 			data: JSON.stringify(item_id),
@@ -81,7 +83,15 @@ button:hover, a:hover {
 					//alert(data);
 				$("#username").text("Customer Name:   "+data.user_name);
 				$("#UserId").text("Customer id:   "+data.user_id);
-				$("#dob").text("Date of Birth:"+data.dob);
+/* 				$("#dob").text("Date of Birth:"+data.dob);
+ */				
+				var x = data.dob;
+				var res = x.split("-");
+				var correct_dob = res[2].concat("-",res[1],"-",res[0]);
+				
+				$("#dob").text("Date of Birth:"+correct_dob);
+
+				$('#picy').attr("src", data.pic_location);
 				
 				$("#user_profile").show();
 			   }
