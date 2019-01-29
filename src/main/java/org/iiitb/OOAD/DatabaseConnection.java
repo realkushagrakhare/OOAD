@@ -61,6 +61,63 @@ public class DatabaseConnection{
 
 	}
 	
+	public boolean addUser(String user_name, String dob, String image_path){
+
+		java.sql.PreparedStatement preparedStatement = null;
+		try {
+			query = "insert into userTable(name,dateOfBirth,pic) VALUES " +
+					 "(?,?,?);";
+	//		System.out.println(user_name);
+		//	System.out.println(query);
+			preparedStatement = conn.prepareStatement(query);
+			//System.out.println(user_name);
+			preparedStatement.setString(1, user_name);
+			preparedStatement.setString(2, dob);
+			preparedStatement.setString(3, image_path);
+			//System.out.println(user_name);
+			int rs = preparedStatement.executeUpdate();
+			if(rs==0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	public boolean updateUser(String id, String user_name, String dob, String image_path){
+
+		java.sql.PreparedStatement preparedStatement = null;
+		try {
+			query = "update usertable " + "set name = ?, dateofbirth = ?, pic = ?" 
+					+ " where user_id = ?";
+	//		System.out.println(user_name);
+		//	System.out.println(query);
+			preparedStatement = conn.prepareStatement(query);
+			//System.out.println(user_name);
+			preparedStatement.setString(1, user_name);
+			preparedStatement.setString(2, dob);
+			preparedStatement.setString(3, image_path);
+			preparedStatement.setString(4, id);
+			//System.out.println(user_name);
+			int rs = preparedStatement.executeUpdate();
+			if(rs==0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
 	public String getItemDetails(int itemid) throws JSONException {
 
 		java.sql.PreparedStatement preparedStatement = null;
@@ -88,9 +145,10 @@ public class DatabaseConnection{
 		return item.toString();
 
 	}
-/*public static void main(String[] args)
+	
+public static void main(String[] args)
 {
 	DatabaseConnection m=new DatabaseConnection();
-	m.getEmployeeNames();
-}*/
+	m.updateUser("6", "Suggu", "1997-11-11", "");
+}
 }
