@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.InputStream;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
@@ -144,6 +145,9 @@ public class MyResource {
 				e.printStackTrace();
 			}
 
-		}
-		
+	    	/*
+	    	 * Code to store image in path
+	    	 */
+	    	return null;
+	    }
 }
