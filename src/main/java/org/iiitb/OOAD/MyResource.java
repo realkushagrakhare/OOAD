@@ -148,6 +148,6 @@ public class MyResource {
 	    	/*
 	    	 * Code to store image in path
 	    	 */
-	    	return null;
+	    	//return null;
 	    }
 }
